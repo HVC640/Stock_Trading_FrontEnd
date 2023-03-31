@@ -8,6 +8,13 @@ import { HomeComponent } from './Pages/home/home.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { OrdersComponent } from './Pages/orders/orders.component';
 import { HoldingsComponent } from './Pages/holdings/holdings.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatChipsModule } from '@angular/material/chips';
+
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -19,7 +26,13 @@ import { HoldingsComponent } from './Pages/holdings/holdings.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatPaginatorModule,
+    NgxPaginationModule,
+    MatChipsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

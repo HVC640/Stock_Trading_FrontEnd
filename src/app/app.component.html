@@ -8,22 +8,16 @@
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="navbar-nav  mb-2 mb-lg-0 justify-content-end">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Orders</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/dashboard">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Holdings</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/holdings">Holdings</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Positions</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled">Funds</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled">Apps</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/orders">Orders</a>
       </li>
     </ul>
   </div>
@@ -31,7 +25,6 @@
 <!--Navbar End-->
 
 <router-outlet></router-outlet>
-<app-home></app-home>
 
 <!--Footer Start-->
 <footer></footer>

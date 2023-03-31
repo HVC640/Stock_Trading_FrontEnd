@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { CompanyServiceService } from 'src/app/company-service.service';
 
 @Component({
   selector: 'app-home',
@@ -7,16 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private companyService: CompanyServiceService) { }
+  arrCompany: any = [];
 
   ngOnInit(): void {
+    this.getCompaniesData();
   }
 
-  arrCompany = [
-    { name: "TANLA", change: -29.10, changePercent: "-5.40%", value: 509.80 },
-    { name: "ATUL", change: 53.05, changePercent: "0.77%", value: 6974.60 },
-    { name: "EPL", change: 6.80, changePercent: "4.35%", value: 163.10 },
-    { name: "IRCON", change: -0.25, changePercent: "-0.47%", value: 52.90 }
-  ]
+  quantity = new FormControl(1);
+  price = 15.01;
+  companyId: number = 102;
+  description: string = "";
+
+  getCompaniesData() {
+    this.arrCompany = this.companyService.getAllCompanies().subscribe(data => this.arrCompany = data);
+    console.log(this.arrCompany);
+  }
+
+  changeCompanyId(id: number) {
+    this.companyId = id;
+    this.description = this.arrCompany.find(x => x.id == this.companyId).companyDescription;
+  }
+
 
 }

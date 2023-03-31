@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="height: 100vh;">
         <div class="col-5" style="background-color: honeydew;">
             <form action="">
                 <input type="text" placeholder="Search" class="w-100">
@@ -7,15 +7,18 @@
 
             <table class="table table-striped">
                 <tr *ngFor="let company of arrCompany" class="mt-3 mb-3">
-                    <td colspan=3>{{company.name}}</td>
-                    <td style="text-align: end;">{{company.change}}</td>
+                    <td colspan=3>{{company.companyName}}</td>
+                    <td><button class="btn btn-info" (click)="changeCompanyId(company.id)">Info</button></td>
                     <td style="text-align: end;">{{company.changePercent}}</td>
-                    <td style="text-align: end;">{{company.value}}</td>
+                    <td style="text-align: end;">{{company.stockPrice}}</td>
+                    <td style="text-align: end;">{{company.stockValueChange}}</td>
                 </tr>
             </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
         </div>
 
-        <div class=" col-7" style="background-color: antiquewhite;">
+        <div class=" col-7" style="background-color: whitesmoke;">
             <div class="row bg-primary pt-2 pb-2" style="color: honeydew;">
                 <div class="row">
                     <span>Buy YESBANK <sub>NSE</sub> x 1 Qty</span>
@@ -30,23 +33,88 @@
             <div class="row mt-3">
                 <div class="col">
                     <img style="height: 300px; width: 400px;"
-                        src="https://www.amcharts.com/wp-content/uploads/2019/10/demo_14593_none-7.png" alt="">
+                        src="https://www.amcharts.com/wp-content/uploads/2019/10/demo_14593_none-7.png"
+                        alt="Failed To Load Image">
                 </div>
                 <div class="col">
-                    Yes Bank Ltd (Yes Bank) is a provider of retail and corporate banking and other financial solutions.
-                    It offers a range a range of accounts, cards, loans, deposits, privilege banking, NRI services, cash
-                    management, trade finance, merchant acquiring, institutional banking, agri banking and digital
-                    banking solutions.
-                </div>
-            </div>
+                    {{description}}
 
-            <div class="row mt-3 mb-3" style="margin-left: auto; margin-right: auto;">
-                <form action="submit">
-                    <div>
-                        <button class="btn btn-success">Buy</button> &nbsp;
-                        <button class="btn btn-danger">Sell</button>
+                    <div class="row">
+                        <div class="col mt-4 mb-2">
+                            <form action="submit">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#buyModal">Buy Stocks</button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="buyModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="buyModalLabel">Buy Stocks</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <input type="number" placeholder="1" [formControl]="quantity">
+                                                    </div>
+                                                    <div class="col">Price : {{price}}</div>
+                                                    <div class="col">Total : {{quantity.value * price}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary">Buy</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col mt-4 mb-2">
+                            <form action="submit">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#sellModal">Sell Stocks</button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="sellModal" tabindex="-1" aria-labelledby="sellModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="sellModalLabel">Sell</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <input type="number" placeholder="1" [formControl]="quantity">
+                                                    </div>
+                                                    <div class="col">Price : {{price}}</div>
+                                                    <div class="col">Total : {{quantity.value * price}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary">Sell</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
