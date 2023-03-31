@@ -12,29 +12,17 @@
                 <th scope="col" class="table-primary">Status</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let order of arrOrder">
             <tr>
-                <th scope="row">12:03</th>
+                <th scope="row">{{order.orderTime}}</th>
                 <td> <span class="bg-buy px-3">
-                        Buy
+                        {{order.orderType}}
                     </span></td>
-                <td>TATA MOTORS</td>
-                <td>100</td>
-                <td>100.5</td>
+                <td>{{order.companyId}}</td>
+                <td>{{order.stockQuantity}}</td>
+                <td>{{order.stockPrice}}</td>
                 <td> <span class="bg-completed p-1">
-                        COMPLETED
-                    </span> </td>
-            </tr>
-            <tr>
-                <th scope="row">12:03</th>
-                <td> <span class="bg-sell px-3">
-                        Sell
-                    </span></td>
-                <td>TATA MOTORS</td>
-                <td>100</td>
-                <td>100.5</td>
-                <td> <span class="bg-completed p-1">
-                        COMPLETED
+                        Completed
                     </span> </td>
             </tr>
         </tbody>

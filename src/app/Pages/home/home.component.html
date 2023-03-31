@@ -21,7 +21,7 @@
         <div class=" col-7" style="background-color: whitesmoke;">
             <div class="row bg-primary pt-2 pb-2" style="color: honeydew;">
                 <div class="row">
-                    <span>Buy YESBANK <sub>NSE</sub> x 1 Qty</span>
+                    <span>Buy {{companyName}} <sub>NSE</sub> x 1 Qty</span>
                 </div>
                 <div class="row">
                     <span><input type="radio" id="BSE"> BSE: $15.06 &nbsp;&nbsp;&nbsp; <input type="radio" checked
@@ -67,7 +67,8 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary">Buy</button>
+                                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                                                    (click)="buyStock()">Buy</button>
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Cancel</button>
                                             </div>
@@ -104,7 +105,8 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary">Sell</button>
+                                                <button type="button" class="btn btn-primary"
+                                                    data-bs-dismiss="modal">Sell</button>
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Cancel</button>
                                             </div>

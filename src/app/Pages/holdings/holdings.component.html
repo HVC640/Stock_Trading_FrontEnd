@@ -8,30 +8,21 @@
                 <tr>
                     <th scope="col">Instrument</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Avg.Cost</th>
-                    <th scope="col">LTP</th>
+                    <th scope="col">Buying Price</th>
+                    <th scope="col">Current Price</th>
                     <th scope="col">Curr.Val</th>
                     <th scope="col">P&L</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let holding of arrHoldings">
                 <tr>
                     <!-- <th scope="row">1</th> -->
-                    <td>GOLD BEES</td>
-                    <td>8</td>
-                    <td>48.24</td>
-                    <td>50.41</td>
-                    <td>403.28</td>
-                    <td>17.36</td>
-                </tr>
-                <tr>
-                    <!-- <th scope="row">1</th> -->
-                    <td>NHPC</td>
-                    <td>15</td>
-                    <td>40.50</td>
-                    <td>38.97</td>
-                    <td>584.55</td>
-                    <td>-22.95</td>
+                    <td>{{holding.companyId}}</td>
+                    <td>{{holding.quantity}}</td>
+                    <td>{{holding.buyPrice}}</td>
+                    <td>{{holding.currentPrice}}</td>
+                    <td>{{holding.currentPrice * holding.quantity}}</td>
+                    <td>{{(holding.currentPrice - holding.buyPrice) * holding.quantity}}</td>
                 </tr>
             </tbody>
         </table>
@@ -44,7 +35,6 @@
                 <tr>
                     <th scope="col">Total Investment</th>
                     <th scope="col">Current Value</th>
-                    <th scope="col">Day's.P&L</th>
                     <th scope="col">Total P&L</th>
 
                 </tr>
@@ -52,10 +42,9 @@
             <tbody>
                 <tr>
                     <!-- <th scope="row">1</th> -->
-                    <td>993.42</td>
-                    <td>987.83</td>
-                    <td>-14.74</td>
-                    <td>-5.59</td>
+                    <td>{{totalInvestment}}</td>
+                    <td>{{currentValue}}</td>
+                    <td>{{profitLoss}}</td>
                 </tr>
             </tbody>
         </table>

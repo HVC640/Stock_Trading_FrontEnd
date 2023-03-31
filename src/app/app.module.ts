@@ -15,6 +15,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { HttpClientModule } from "@angular/common/http";
+import { AddFundComponent } from './Pages/add-fund/add-fund.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from "@angular/common/http";
     HomeComponent,
     DashboardComponent,
     OrdersComponent,
-    HoldingsComponent
+    HoldingsComponent,
+    AddFundComponent
   ],
   imports: [
     BrowserModule,
