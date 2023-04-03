@@ -42,18 +42,26 @@ export class HomeComponent implements OnInit {
 
   buyStock() {
     const dt = new Date();
-    const orderObj = new order(5, this.id, this.companyId, dt, 0, this.price, this.quantity.value, (this.price * this.quantity.value));
+    const orderObj = new order(5, this.id, this.companyId, dt, 1, this.price, this.quantity.value, (this.price * this.quantity.value));
     this.companyService.insertOrder(orderObj).subscribe((result) => {
       console.log(result);
     });
 
-    // number | null;
-    // companyId!: number | null;
-    // quantity!: number | null;
-    // buyPrice!: number | null;
-    // currentPrice!: number | null;
     const userHoldingsObj = new UserHoldings(this.id, this.companyId, this.quantity.value, this.price, this.currentPrice);
     this.companyService.insertHolding(userHoldingsObj).subscribe((result) => {
+      console.log(result);
+    });
+  }
+
+  sellStock() {
+    const dt = new Date();
+    const orderObj = new order(6, this.id, this.companyId, dt, 0, this.price, this.quantity.value, (this.price * this.quantity.value));
+    this.companyService.insertOrder(orderObj).subscribe((result) => {
+      console.log(result);
+    });
+
+    const userHoldingsObj = new UserHoldings(this.id, this.companyId, this.quantity.value, this.price, this.currentPrice);
+    this.companyService.updateHolding(userHoldingsObj).subscribe((result) => {
       console.log(result);
     });
   }

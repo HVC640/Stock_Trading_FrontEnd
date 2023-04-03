@@ -8,8 +8,10 @@ import { CompanyServiceService } from 'src/app/company-service.service';
 })
 export class OrdersComponent {
 
+  companyArr: any;
   ngOnInit(): void {
     this.getOrderData(103);
+    this.getCompanyData();
   }
 
   constructor(private companyService: CompanyServiceService) { }
@@ -18,5 +20,13 @@ export class OrdersComponent {
   getOrderData(id: number) {
     this.arrOrder = this.companyService.getOrderById(id).subscribe(data => this.arrOrder = data);
     console.log(this.arrOrder);
+  }
+
+  getCompanyData() {
+    this.companyArr = this.companyService.getAllCompanies().subscribe(data => this.companyArr = data);
+  }
+
+  htmlgeneration = function (companyId: number) {
+    return this.companyArr.find(data => data.id == companyId).companyName;
   }
 }
