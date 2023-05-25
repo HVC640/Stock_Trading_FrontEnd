@@ -27,6 +27,8 @@ export class HomeComponent implements OnInit {
   description: string = "";
   currentPrice: number = 0;
 
+  searchText = new FormControl();
+
   getCompaniesData() {
     this.arrCompany = this.companyService.getAllCompanies().subscribe(data => this.arrCompany = data);
     console.log(this.arrCompany);
@@ -42,7 +44,7 @@ export class HomeComponent implements OnInit {
 
   buyStock() {
     const dt = new Date();
-    const orderObj = new order(5, this.id, this.companyId, dt, 1, this.price, this.quantity.value, (this.price * this.quantity.value));
+    const orderObj = new order(6, this.id, this.companyId, dt, 1, this.price, this.quantity.value, (this.price * this.quantity.value));
     this.companyService.insertOrder(orderObj).subscribe((result) => {
       console.log(result);
     });
@@ -65,4 +67,25 @@ export class HomeComponent implements OnInit {
       console.log(result);
     });
   }
+
+
+
+  search() {
+    const txt = this.searchText.value;
+
+    if (!txt) {
+      this.getCompaniesData();
+      return;
+    }
+
+    const arrCompanySearch: any = [];
+    for (var d of this.arrCompany) {
+      if (d.companyName.toLowerCase().includes(txt.toLowerCase())) {
+        arrCompanySearch.push(d);
+      }
+    }
+
+    this.arrCompany = arrCompanySearch
+  }
+
 }

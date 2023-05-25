@@ -1,18 +1,29 @@
-<div class="container-fluid">
+<div style="height: 100vh;" class="container-fluid">
     <div class="row" style="height: 100vh;">
         <div class="col-5" style="background-color: honeydew;">
             <form action="">
-                <input type="text" placeholder="Search" class="w-100">
+                <input type="text" (input)="search()" placeholder="Search" class="w-100" [formControl]="searchText">
             </form>
 
             <table class="table table-striped">
-                <tr *ngFor="let company of arrCompany" class="mt-3 mb-3">
-                    <td colspan=3>{{company.companyName}}</td>
-                    <td><button class="btn btn-info" (click)="changeCompanyId(company.id)">Info</button></td>
-                    <td style="text-align: end;">{{company.changePercent}}</td>
-                    <td style="text-align: end;">{{company.stockPrice}}</td>
-                    <td style="text-align: end;">{{company.stockValueChange}}</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th scope="col" colspan=3 class="table-primary">Company</th>
+                        <th scope="col" class="table-primary">Info</th>
+                        <th scope="col" class="table-primary">Change Percent</th>
+                        <th scope="col" class="table-primary">Stock Price</th>
+                        <th scope="col" class="table-primary">Stock Value Change</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let company of arrCompany" class="mt-3 mb-3">
+                    <tr>
+                        <td colspan=3>{{company.companyName}}</td>
+                        <td><button class="btn btn-info" (click)="changeCompanyId(company.id)">Info</button></td>
+                        <td style="text-align: end;">{{company.changePercent}}</td>
+                        <td style="text-align: end;">{{company.stockPrice}}</td>
+                        <td style="text-align: end;">{{company.stockValueChange}}</td>
+                    </tr>
+                </tbody>
             </table>
 
             <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>

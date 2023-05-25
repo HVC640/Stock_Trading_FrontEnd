@@ -12,8 +12,14 @@ export class AddFundComponent {
   constructor(private companyService: CompanyServiceService) { }
   id: number = 103;
   quantity = new FormControl(0);
-
+  accountBalance: any
   addFund() {
+
+    if (this.quantity.value == 0) {
+      alert("Please enter non-zero amount!");
+      return;
+    }
+
     const dt = new Date();
     const userObj = new User(this.id, "", "", 0, "", dt, 0, this.quantity.value);
     this.companyService.updateFund(userObj).subscribe((result) => {
@@ -23,6 +29,18 @@ export class AddFundComponent {
   }
 
   withdrawFund() {
+    if (this.quantity.value == 0) {
+      alert("Please enter non-zero amount!");
+      return;
+    }
+
+    this.accountBalance = this.companyService.getUserFund(this.id).subscribe(data => this.accountBalance = data);
+    console.log(this.accountBalance)
+    if (this.accountBalance < this.quantity.value) {
+      alert("Please enter amount less than existing account Balance : " + this.accountBalance);
+      return
+    }
+
     const dt = new Date();
     const userObj = new User(this.id, "", "", 0, "", dt, 0, this.quantity.value);
     this.companyService.updateFundWithdraw(userObj).subscribe((result) => {

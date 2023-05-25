@@ -12,50 +12,50 @@ export class CompanyServiceService {
   constructor(private http: HttpClient) { }
 
   getAllCompanies() {
-    return this.http.get("http://localhost:8961/getAllCompanies");
+    return this.http.get("http://localhost:8989/company/getAllCompanies");
   }
 
   getOrderById(id: number) {
-    return this.http.get("http://localhost:8961/getOrders/" + id);
+    return this.http.get("http://localhost:8989/order/getOrders/" + id);
   }
 
   getUserHoldings(id: number) {
-    return this.http.get("http://localhost:8961/getUserHoldings/" + id);
+    return this.http.get("http://localhost:8989/holdings/getUserHoldings/" + id);
   }
 
   getUserHoldingsTotalInvestment(id: number) {
-    return this.http.get("http://localhost:8961/findTotalInvestment/" + id);
+    return this.http.get("http://localhost:8989/holdings/findTotalInvestment/" + id);
   }
 
   getUserHoldingsCurrentValue(id: number) {
-    return this.http.get("http://localhost:8961/findCurrentValue/" + id);
+    return this.http.get("http://localhost:8989/holdings/findCurrentValue/" + id);
   }
 
   getUserHoldingsFindProfitLoss(id: number) {
-    return this.http.get("http://localhost:8961/findProfitLoss/" + id);
+    return this.http.get("http://localhost:8989/holdings/findProfitLoss/" + id);
   }
 
   insertOrder(orderObj: order) {
-    return this.http.post('http://localhost:8961/insertOrder', orderObj);
+    return this.http.post('http://localhost:8989/order/insertOrder', orderObj);
   }
 
   insertHolding(userHoldingsObj: UserHoldings) {
-    return this.http.post('http://localhost:8961/insertHoldings', userHoldingsObj);
+    return this.http.post('http://localhost:8989/holdings/insertHoldings', userHoldingsObj);
   }
 
   updateHolding(userHoldingsObj: UserHoldings) {
-    return this.http.post('http://localhost:8961/updateHoldings', userHoldingsObj);
+    return this.http.post('http://localhost:8989/holdings/updateHoldings', userHoldingsObj);
   }
 
   updateFund(userObj: User) {
-    return this.http.put('http://localhost:8961/updateFund', userObj);
+    return this.http.put('http://localhost:8989/user/updateFund', userObj);
   }
 
   updateFundWithdraw(userObj: User) {
-    return this.http.put('http://localhost:8961/updateFundWithdraw', userObj);
+    return this.http.put('http://localhost:8989/user/updateFundWithdraw', userObj);
   }
 
   getUserFund(id: number) {
-    return this.http.get('http://localhost:8961/getFund/' + id);
+    return this.http.get('http://localhost:8989/user/getFund/' + id);
   }
 }
